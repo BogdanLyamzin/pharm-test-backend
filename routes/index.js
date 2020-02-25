@@ -5,10 +5,10 @@
 //     });
 // };
 
-const register = require("login/register");
-const login = require("login/login");
+const register = require("./login/register");
+const login = require("./login/login");
 
-const home = require("./home");
+const home = require("./pages/home");
 
 // Users Routes
 const deleteUser = require("./users/delete");
