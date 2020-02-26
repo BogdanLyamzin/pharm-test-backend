@@ -5,17 +5,14 @@
 //     });
 // };
 
-const register = require("login/register");
-const login = require("login/login");
-
-const home = require("./home");
+const register = require("./login/register");
+const login = require("./login/login");
 
 // Users Routes
 const deleteUser = require("./users/delete");
 
 module.exports = (server) => {
     // server === app
-    home(server);
     register(server);
     login(server);
 
