@@ -1,34 +1,40 @@
-const mongoose = require("mongoose");
-
-const productShema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    article: {
-        type: Number,
-        required: true
-    }
-});
-
-const productsModel = mongoose.model("Product", productShema);
+const Product = require("../../models/Product");
 
 module.exports = (app) => {
-    app.post("/products/", (req, res)=> {
+    app.post("/products/", async (req, res)=> {
         const productData = {
             name: req.body.name,
             article: req.body.article
         };
 
-        // productsModel.find({})
+        const product = new Product(productData);
 
-        const product = new productsModel(productData);
+        try {
+            const result = await product.save();
+            res.send({
+                status: "Success",
+                result
+            });
+        }
+        catch(err) {
+            res.send({
+                status: "Error",
+                message: err.message
+            })
+        }
 
-        // product.save()
-        //     .then(data => {
-        //
-        //     })
-
+/*
+        produt.save()
+            .then(data => res.send({
+            status: "Success",
+            result: data
+        }))
+            .catch(err => res.send({
+                status: "Error",
+                message: err
+            }));
+      */
+/*
         product.save(function (err, data) {
             if(err) {
                 res.send({
@@ -43,5 +49,6 @@ module.exports = (app) => {
                 })
             }
         });
-    })
-}
+*/
+    });
+};

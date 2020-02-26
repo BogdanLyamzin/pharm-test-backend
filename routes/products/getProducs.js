@@ -1,12 +1,10 @@
 const Product = require("../../models/Product");
 
 module.exports = (app) => {
-    app.delete("/products/:id", async (req, res)=> {
-
-        const id = req.params;
+    app.get("/products/", async (req, res)=> {
 
         try {
-            const result = await Product.findByIdAndDelete(id);
+            const result = await Product.find(req.query);
             res.send({
                 status: "Success",
                 result

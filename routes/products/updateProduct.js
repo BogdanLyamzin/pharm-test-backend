@@ -1,12 +1,17 @@
 const Product = require("../../models/Product");
 
 module.exports = (app) => {
-    app.delete("/products/:id", async (req, res)=> {
+    app.put("/products/:id", async (req, res)=> {
 
         const id = req.params;
 
+        const newProduct = {
+            name: req.body.name,
+            article: req.body.article
+        }
+
         try {
-            const result = await Product.findByIdAndDelete(id);
+            const result = await Product.findByIdAndUpdate(id, newProduct);
             res.send({
                 status: "Success",
                 result
