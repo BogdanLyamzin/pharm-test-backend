@@ -15,6 +15,8 @@ const deleteUser = require("./users/delete");
 const fileUploadPage = require("./fileupload");
 const fileUpload = require("./file_upload");
 
+const addBook = require("./books/addBook");
+
 module.exports = (server) => {
     // server === app
     register(server);
@@ -26,4 +28,6 @@ module.exports = (server) => {
     
     fileUploadPage(server);
     fileUpload(server);
+
+    addBook(server);
 };
