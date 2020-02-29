@@ -12,6 +12,9 @@ const addProduct = require("./products/addProduct");
 // Users Routes
 const deleteUser = require("./users/delete");
 
+const fileUploadPage = require("./fileupload");
+const fileUpload = require("./file_upload");
+
 module.exports = (server) => {
     // server === app
     register(server);
@@ -20,4 +23,7 @@ module.exports = (server) => {
     deleteUser(server);
 
     addProduct(server);
+    
+    fileUploadPage(server);
+    fileUpload(server);
 };
